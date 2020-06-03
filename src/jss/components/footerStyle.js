@@ -84,8 +84,8 @@ const footerStyle = {
     padding: "10px 15px",
     textDecoration: "none",
     "&:hover,&:focus": {
-      color: whiteColor,
-      // background: "rgba(" + hexToRgb(grayColor[17]) + ", 0.2)",
+      color: grayColor[2],
+      background: "rgba(" + hexToRgb(grayColor[17]) + ", 0.2)",
     },
   },
   footerGrid: {
