@@ -64,7 +64,11 @@ export default function MainNavbar(props) {
         </DialogTitle>
       </Hidden>
       <ListItem className={classes.listItem}>
-        <NavLink to={"/main/real-estate"} className={classes.navLink}>
+        <NavLink
+          to={"/main/real-estate"}
+          className={classes.navLink}
+          onClick={handleDrawerToggle}
+        >
           <ApartmentIcon className={classes.listItemIcon} />
           <ListItemText
             primary={"Real Estate"}
@@ -76,6 +80,7 @@ export default function MainNavbar(props) {
       <ListItem className={classes.listItem}>
         <NavLink
           to={"/main/financing"}
+          onClick={handleDrawerToggle}
           className={classnames(classes.navLink, {
             [classes.navLinkActive]: activeRoute("/main/financing"),
           })}
@@ -90,14 +95,15 @@ export default function MainNavbar(props) {
       </ListItem>
       <ListItem className={classes.listItem}>
         <NavLink
-          to={"/main/taxation"}
+          to={"/main/tax"}
+          onClick={handleDrawerToggle}
           className={classnames(classes.navLink, {
-            [classes.navLinkActive]: activeRoute("/main/taxation"),
+            [classes.navLinkActive]: activeRoute("/main/tax"),
           })}
         >
           <DescriptionIcon className={classes.listItemIcon} />
           <ListItemText
-            primary={"Taxation"}
+            primary={"Tax"}
             disableTypography={true}
             className={classes.listItemText}
           />
@@ -106,6 +112,7 @@ export default function MainNavbar(props) {
       <ListItem className={classes.listItem}>
         <NavLink
           to={"/calculator/dashboard"}
+          onClick={handleDrawerToggle}
           className={classnames(classes.navLink, {
             [classes.navLinkActive]: activeRoute("/calculator/dashboard"),
           })}
@@ -118,7 +125,6 @@ export default function MainNavbar(props) {
           />
         </NavLink>
       </ListItem>
-      
     </List>
   );
   return (

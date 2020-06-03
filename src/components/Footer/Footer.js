@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classnames from "classnames";
+import { NavLink } from "react-router-dom";
 
 // @material-ui/core components
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -36,9 +37,10 @@ export default function Footer(props) {
     classnames({
       [" " + classes.whiteColor]: white,
     });
-  var block = classnames({
-    [classes.block]: true,
-    [classes.whiteColor]: white,
+  var footerLinks = classnames({
+    // [classes.block]: true,
+    [classes.navLink]: true,
+    [classes.whiteFooter]: white,
   });
   return (
     <footer className={classes.footer}>
@@ -47,10 +49,11 @@ export default function Footer(props) {
           direction={matchesXS ? "column" : "row"}
           justify="space-between"
           alignItems="center"
+          
         >
-          <GridItem>
+          <GridItem classes={{ root: classes.footerPadding }}>
             <List className={classes.list}>
-              <GridContainer justify="center">
+              <GridContainer justify="center" className={classes.footerGrid} >
                 <GridItem className={classes.noPadding}>
                   <ListItem
                     className={classes.inlineBlock}
@@ -59,9 +62,7 @@ export default function Footer(props) {
                       textAlign: matchesXS ? "center" : "left",
                     }}
                   >
-                    <a href="/main/about" className={block}>
-                      About
-                    </a>
+                    <NavLink to={"/main/about"} className={footerLinks}>About</NavLink>
                   </ListItem>
                 </GridItem>
                 <GridItem className={classes.noPadding}>
@@ -72,9 +73,7 @@ export default function Footer(props) {
                       textAlign: matchesXS ? "center" : "left",
                     }}
                   >
-                    <a href="/main/team" className={block}>
-                      Team
-                    </a>
+                    <NavLink to={"/main/team"} className={footerLinks}>Team</NavLink>
                   </ListItem>
                 </GridItem>
                 <GridItem className={classes.noPadding}>
@@ -85,9 +84,7 @@ export default function Footer(props) {
                       textAlign: matchesXS ? "center" : "left",
                     }}
                   >
-                    <a href="/main/contacts" className={block}>
-                      Contacts
-                    </a>
+                    <NavLink to={"/main/contacts"} className={footerLinks}>Contacts</NavLink>
                   </ListItem>
                 </GridItem>
               </GridContainer>

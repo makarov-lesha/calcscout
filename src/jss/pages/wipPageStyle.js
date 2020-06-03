@@ -15,13 +15,13 @@ import {
     title: {
       ...defaultFont,
       color: grayColor[1],
-      marginTop: "5vh",
+      marginTop: "0vh",
       marginBottom: "30px",
       textAlign: "center",
     },
     description: {
       fontSize: "18px",
-      color: grayColor[2],
+      color: grayColor[1],
       textAlign: "center",
     },
   });

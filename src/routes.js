@@ -149,7 +149,7 @@ var dashRoutes = [
   {
     layout: "/main",
     path: "/about",
-    name: "About us",
+    name: "About Us",
     icon: EqualizerIcon,
     component: WIPPage,
   },

@@ -39,6 +39,7 @@ import {
     title: {
       ...defaultFont,
       lineHeight: "30px",
+      paddingLeft: "10px",
       fontSize: "18px",
       borderRadius: "3px",
       textTransform: "none",

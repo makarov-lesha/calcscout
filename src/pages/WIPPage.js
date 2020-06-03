@@ -13,7 +13,7 @@ const useStyles = makeStyles(styles);
 export default function StartPage() {
   const classes = useStyles();
   return (
-    <div>
+    <div style={{zIndex:"4"}}>
       <Grid container direction="column" alignItems="center">
         <Grid item>
           <h2 className={classes.title}>Work in Progress</h2>

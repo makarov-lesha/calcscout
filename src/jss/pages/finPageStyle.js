@@ -8,6 +8,7 @@ import {
     container: {
       ...container,
       zIndex: "4",
+      alignSelf: "center"
       // [theme.breakpoints.down("sm")]: {
       //   paddingTop: "40px",
       // },
@@ -15,7 +16,7 @@ import {
     title: {
       ...defaultFont,
       color: grayColor[1],
-      marginTop: "5vh",
+      marginTop: "0vh",
       marginBottom: "30px",
       textAlign: "center",
     },

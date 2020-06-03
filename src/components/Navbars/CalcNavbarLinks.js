@@ -1,3 +1,4 @@
+//
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
@@ -71,7 +72,7 @@ export default function HeaderLinks(props) {
     });
     return (
       <div className={wrapper}>
-        <CustomInput
+        {/* <CustomInput
           rtlActive={rtlActive}
           formControlProps={{
             className: classes.top + " " + classes.search
@@ -92,8 +93,8 @@ export default function HeaderLinks(props) {
           className={searchButton}
         >
           <Search className={classes.headerLinksSvg + " " + classes.searchIcon} />
-        </Button>
-        <Button
+        </Button> */}
+        {/* <Button
           color="transparent"
           simple
           aria-label="Dashboard"
@@ -115,8 +116,8 @@ export default function HeaderLinks(props) {
               {rtlActive ? "لوحة القيادة" : "Dashboard"}
             </span>
           </Hidden>
-        </Button>
-        <div className={managerClasses}>
+        </Button> */}
+        {/* <div className={managerClasses}>
           <Button
             color="transparent"
             justIcon
@@ -193,10 +194,10 @@ export default function HeaderLinks(props) {
               </Grow>
             )}
           </Popper>
-        </div>
+        </div> */}
   
         <div className={managerClasses}>
-          <Button
+          {/* <Button
             color="transparent"
             aria-label="Person"
             justIcon
@@ -222,7 +223,7 @@ export default function HeaderLinks(props) {
                 {rtlActive ? "الملف الشخصي" : "Profile"}
               </span>
             </Hidden>
-          </Button>
+          </Button> */}
           <Popper
             open={Boolean(openProfile)}
             anchorEl={openProfile}

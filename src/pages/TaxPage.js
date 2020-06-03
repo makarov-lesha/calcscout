@@ -18,7 +18,7 @@ export default function StartPage() {
     <div className={classes.container}>
       <GridContainer justify="center" direction="column" alignItems="center">
         <GridItem xs={12} sm={12} md={6}>
-          <h2 className={classes.title}>Taxation Tools</h2>
+          <h2 className={classes.title}>Tax Tools</h2>
           <h5 className={classes.description}>
             To make your life slightly easier.
           </h5>

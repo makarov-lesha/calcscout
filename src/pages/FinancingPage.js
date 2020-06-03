@@ -16,7 +16,7 @@ export default function StartPage() {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <GridContainer justify="center" direction="column" alignItems="center">
+      <GridContainer justify="flex-start" direction="column" alignItems="center">
         <GridItem xs={12} sm={12} md={6}>
           <h2 className={classes.title}>Financing Tools</h2>
           <h5 className={classes.description}>
