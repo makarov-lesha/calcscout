@@ -65,13 +65,13 @@ const containerFluid = {
   paddingLeft: "15px",
   marginRight: "auto",
   marginLeft: "auto",
-  "&:before,&:after": {
-    display: "table",
-    content: '" "',
-  },
-  "&:after": {
-    clear: "both",
-  },
+  // "&:before,&:after": {
+  //   display: "table",
+  //   content: '" "',
+  // },
+  // "&:after": {
+  //   clear: "both",
+  // },
 };
 
 const container = {
@@ -88,13 +88,13 @@ const container = {
   "@media (min-width: 1200px)": {
     width: "1170px",
   },
-  "&:before,&:after": {
-    display: "table",
-    content: '" "',
-  },
-  "&:after": {
-    clear: "both",
-  },
+  // "&:before,&:after": {
+  //   display: "table",
+  //   content: '" "',
+  // },
+  // "&:after": {
+  //   clear: "both",
+  // },
 };
 
 const defaultFont = {

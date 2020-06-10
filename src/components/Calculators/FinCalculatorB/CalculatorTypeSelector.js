@@ -36,7 +36,7 @@ export default function PanelsDescriptive(props) {
   return (
     <div>
       <GridContainer justify="center">
-        <GridItem xs={12} sm={6} md={6}>
+        <GridItem xs={12} sm={9} md={9}>
           <h4 className={classes.pageSubcategoriesTitle}>
             Choose one option to proceed
           </h4>

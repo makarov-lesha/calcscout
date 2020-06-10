@@ -24,7 +24,7 @@ export default function FixedPlugin(props) {
   const handleClick = () => {
     props.handleFixedClick();
   };
-  const handleChange = name => event => {
+  const handleChange = (name) => (event) => {
     switch (name) {
       case "miniActive":
         props.sidebarMinimize();
@@ -188,7 +188,7 @@ export default function FixedPlugin(props) {
                   switchBase: classesObj.switchBase,
                   checked: classesObj.switchChecked,
                   thumb: classesObj.switchIcon,
-                  track: classesObj.switchBar
+                  track: classesObj.switchBar,
                 }}
               />
               <div className="clearfix" />
@@ -205,7 +205,7 @@ export default function FixedPlugin(props) {
                   switchBase: classesObj.switchBase,
                   checked: classesObj.switchChecked,
                   thumb: classesObj.switchIcon,
-                  track: classesObj.switchBar
+                  track: classesObj.switchBar,
                 }}
               />
               <div className="clearfix" />
@@ -260,34 +260,6 @@ export default function FixedPlugin(props) {
               <img src={imagine4} alt="..." />
             </a>
           </li>
-          <li className="button-container">
-            <div>
-              <Button
-                color="warning"
-                href="/"
-                target="_blank"
-                fullWidth
-              >
-                Buy now
-              </Button>
-            </div>
-          </li>
-          <li className="button-container">
-            <div>
-              <Button
-                color="warning"
-                href="/"
-                target="_blank"
-                fullWidth
-              >
-                Buy now
-              </Button>
-            </div>
-          </li>
-          <li className="header-title" id="sharrreTitle">
-            Thank you for sharing!
-            <br />
-          </li>
         </ul>
       </div>
     </div>
@@ -307,12 +279,11 @@ FixedPlugin.propTypes = {
     "green",
     "blue",
     "purple",
-    "rose"
+    "rose",
   ]),
   handleBgColorClick: PropTypes.func,
   handleColorClick: PropTypes.func,
   handleImageClick: PropTypes.func,
   sidebarMinimize: PropTypes.func,
-  rtlActive: PropTypes.bool
+  rtlActive: PropTypes.bool,
 };
-

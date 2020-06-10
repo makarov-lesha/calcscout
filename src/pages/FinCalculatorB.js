@@ -75,7 +75,7 @@ export default function FinCalculatorB() {
         <GridItem xs={12}>
           {activeStepIndex > 0 && (
             <Button
-              color="default"
+              color="info"
               onClick={() => {
                 changeStepIndex(-1);
               }}
@@ -84,7 +84,7 @@ export default function FinCalculatorB() {
             </Button>
           )}
           <Button
-            color="default"
+            color="info"
             onClick={() => {
               changeStepIndex(1);
             }}

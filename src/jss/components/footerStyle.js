@@ -50,6 +50,9 @@ const footerStyle = {
     backgroundColor: "transparent",
   },
   list: {
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
     marginBottom: "0",
     padding: "0",
     marginTop: "0",
@@ -95,6 +98,18 @@ const footerStyle = {
   },
   footerPadding: {
     padding: "0px",
+  },
+  horizontalFooter: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  verticalFooter: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
   },
 };
 export default footerStyle;

@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 // @material-ui/core components
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -133,7 +133,8 @@ export default function MainNavbar(props) {
         <Hidden smDown>
           <div className={classes.flex}>
             <Button
-              href="/"
+              component={Link}
+              to="/"
               className={classes.title}
               color="transparent"
               style={{ alignItems: "baseline" }}
@@ -152,7 +153,8 @@ export default function MainNavbar(props) {
         <Hidden mdUp>
           <div className={classes.flex}>
             <Button
-              href="/"
+              component={Link}
+              to="/"
               className={classes.title}
               color="transparent"
               style={{ alignItems: "baseline" }}

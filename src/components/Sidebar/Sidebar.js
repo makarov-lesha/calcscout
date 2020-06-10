@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 // javascript plugin used to create scrollbars on windows
 import PerfectScrollbar from "perfect-scrollbar";
@@ -471,12 +472,13 @@ class Sidebar extends React.Component {
       });
     var brand = (
       <div className={logoClasses}>
-        <a href="/" className={logoMini}>
+        <Link to="/" className={logoMini}>
           <img src={logo} alt="logo" className={classes.img} />
-        </a>
-        <a href="/" className={logoNormal}>
+        </Link>
+
+        <Link to="/" className={logoNormal}>
           {logoText}
-        </a>
+        </Link>
       </div>
     );
     const drawerPaper =

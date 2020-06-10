@@ -27,7 +27,6 @@ export default function StartPage() {
         </GridItem>
         <GridItem xs={12} sm={12} md={6}>
           <Button
-            round
             variant="contained"
             color="default"
             component={Link}
