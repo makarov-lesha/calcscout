@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,7 +17,11 @@ export default function StartPage() {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <GridContainer justify="flex-start" direction="column" alignItems="center">
+      <GridContainer
+        justify="flex-start"
+        direction="column"
+        alignItems="center"
+      >
         <GridItem xs={12} sm={12} md={6}>
           <h2 className={classes.title}>Financing Tools</h2>
           <h5 className={classes.description}>
@@ -28,7 +33,8 @@ export default function StartPage() {
             round
             variant="contained"
             color="default"
-            href="/calculator/fin-calc-a"
+            component={Link}
+            to="/calculator/fin-calc-a"
           >
             FINANCIAL CALCULATORS
           </Button>

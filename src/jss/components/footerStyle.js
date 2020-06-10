@@ -65,7 +65,6 @@ const footerStyle = {
     },
   },
 
-  
   noPadding: {
     padding: "5px 0px !important",
   },
@@ -95,8 +94,7 @@ const footerStyle = {
     color: whiteColor,
   },
   footerPadding: {
-    padding:"0px",
-    
-  }
+    padding: "0px",
+  },
 };
 export default footerStyle;

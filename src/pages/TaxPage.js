@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -28,7 +29,8 @@ export default function StartPage() {
             round
             variant="contained"
             color="default"
-            href="/calculator/tax-calc-a"
+            component={Link}
+            to="/calculator/tax-calc-a"
           >
             TAX CALCULATORs
           </Button>

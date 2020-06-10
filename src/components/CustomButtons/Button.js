@@ -27,6 +27,7 @@ const RegularButton = React.forwardRef((props, ref) => {
     justIcon,
     className,
     muiClasses,
+    fullContainer,
     ...rest
   } = props;
   const btnClasses = classNames({
@@ -35,6 +36,7 @@ const RegularButton = React.forwardRef((props, ref) => {
     [classes[color]]: color,
     [classes.round]: round,
     [classes.fullWidth]: fullWidth,
+    [classes.fullContainer]: fullContainer,
     [classes.disabled]: disabled,
     [classes.simple]: simple,
     [classes.block]: block,

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -6,6 +7,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
+import Button from "components/CustomButtons/Button.js";
 
 import styles from "jss/pages/startPageStyle.js";
 
@@ -18,11 +20,19 @@ export default function StartPage() {
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={6}>
           <h2 className={classes.title}>Calculation tools</h2>
-          <h5 className={classes.description}>
-            To make your life slightly easier
-          </h5>
         </GridItem>
       </GridContainer>
+      <div className={classes.gridContainer}>
+        <Button color="default" component={Link} to="/main/financing">
+          Real Estate
+        </Button>
+        <Button color="white" component={Link} to="/main/financing">
+          Financing
+        </Button>
+        <Button color="twitter" component={Link} to="/main/tax">
+          Tax
+        </Button>
+      </div>
     </div>
   );
 }
