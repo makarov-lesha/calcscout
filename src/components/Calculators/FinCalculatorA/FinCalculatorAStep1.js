@@ -21,7 +21,7 @@ import IosDurationSlider from "components/Calculators/FinCalculatorB/IosDuration
 import InterestRateSlider from "components/Calculators/FinCalculatorB/InterestRateSlider.js";
 
 //styles
-import styles from "jss/pages/calculatorFinBStyle.js";
+import styles from "jss/pages/calculatorFinAStyle.js";
 
 const useStyles = makeStyles(styles);
 
@@ -69,26 +69,6 @@ export default function FinCalculatorBStep1(props) {
         </Card>
       </div>
 
-      <div className={classes.input3}>
-        <Card className={classes.cardNotMoved}>
-          <CardHeader color="success" icon>
-            <h4 className={classes.cardIconTitle}>
-              Early Repayment Assumption
-            </h4>
-          </CardHeader>
-          <CardBody></CardBody>
-        </Card>
-      </div>
-
-      <div className={classes.input4}>
-        <Card className={classes.cardNotMoved}>
-          <CardHeader color="success" icon>
-            <h4 className={classes.cardIconTitle}>Additional Parameters</h4>
-          </CardHeader>
-          <CardBody></CardBody>
-        </Card>
-      </div>
-
       <div className={classes.result}>
         <Card>
           <CardHeader color="success" icon>
@@ -100,11 +80,7 @@ export default function FinCalculatorBStep1(props) {
           <CardBody>
             <div className={classes.containerResult}>
               <div className={classes.indicator1}>
-                <Paper
-                  variant="outlined"
-                  elevation={0}
-                  className={classes.paper1}
-                >
+                <Paper elevation={2} className={classes.paper1}>
                   <p className={classes.indicatorCaption}>Loan Principal</p>
                   <h3 className={classes.indicatorValue}>$700k</h3>
                   <p className={classes.indicatorCaption}>repaid in</p>
@@ -122,23 +98,13 @@ export default function FinCalculatorBStep1(props) {
                 </Paper>
               </div>
               <div className={classes.indicator3}>
-                <Paper
-                  variant="outlined"
-                  outlined
-                  elevation={0}
-                  className={classes.paper1}
-                >
+                <Paper outlined elevation={2} className={classes.paper1}>
                   <p className={classes.indicatorCaption}>Effective rate</p>
                   <h3 className={classes.indicatorValue}>2.7%</h3>
                 </Paper>
               </div>
               <div className={classes.indicator4}>
-                <Paper
-                  variant="outlined"
-                  outlined
-                  elevation={0}
-                  className={classes.paper1}
-                >
+                <Paper outlined elevation={2} className={classes.paper1}>
                   <p className={classes.indicatorCaption}>
                     Sum of all interest payments
                   </p>
@@ -149,7 +115,20 @@ export default function FinCalculatorBStep1(props) {
           </CardBody>
         </Card>
       </div>
-      <div className={classes.chart}>
+
+      <div className={classes.chart1}>
+        <Card>
+          <CardHeader color="success" icon>
+            <CardIcon color="info">
+              <BarChartIcon />
+            </CardIcon>
+            <h4 className={classes.cardIconTitle}>Chart</h4>
+          </CardHeader>
+          <CardBody></CardBody>
+        </Card>
+      </div>
+
+      <div className={classes.chart2}>
         <Card>
           <CardHeader color="success" icon>
             <CardIcon color="info">

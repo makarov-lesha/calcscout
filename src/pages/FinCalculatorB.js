@@ -60,7 +60,7 @@ export default function FinCalculatorB() {
   return (
     <div className={classes.containerCalculator}>
       <Typography variant="h5" component="h1" align="center">
-        Penalty Estimation
+        Early Repayment Penalty Estimation
       </Typography>
 
       <div>

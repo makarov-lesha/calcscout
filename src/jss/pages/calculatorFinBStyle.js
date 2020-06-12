@@ -1,5 +1,21 @@
 import { grayColor, cardTitle } from "jss/material-dashboard-pro-react.js";
 
+const title = {
+  color: grayColor[2],
+  textDecoration: "none",
+  fontWeight: "300",
+  marginTop: "30px",
+  marginBottom: "25px",
+  minHeight: "32px",
+  fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+  "& small": {
+    color: grayColor[1],
+    fontSize: "65%",
+    fontWeight: "400",
+    lineHeight: "1",
+  },
+};
+
 const finCalculatorBStyle = (theme) => ({
   containerCalculator: {
     display: "grid",
@@ -21,7 +37,7 @@ const finCalculatorBStyle = (theme) => ({
     // alignItems: "center",
     // justifyItems: "center",
   },
-  containerLoanDetails: {
+  containerInput1: {
     display: "grid",
     gridTemplateRows: "repeat(3, auto)",
     gridTemplateColumns: "2fr 3fr",
@@ -81,7 +97,7 @@ const finCalculatorBStyle = (theme) => ({
     marginBottom: "0px",
   },
 
-  containerMainIndicators: {
+  containerResult: {
     display: "grid",
     gridTemplateRows: "2fr 1fr",
     gridTemplateColumns: "1fr 2fr",
@@ -90,6 +106,8 @@ const finCalculatorBStyle = (theme) => ({
                 "indicator3 indicator4"
     `,
     gridGap: "0.4rem",
+    width: "100%",
+    height: "100%",
   },
   indicator1: {
     gridArea: "indicator1",
@@ -118,6 +136,30 @@ const finCalculatorBStyle = (theme) => ({
     justifySelf: "center",
     width: "100%",
     height: "100%",
+  },
+  paper1: {
+    width: "100%",
+    height: "100%",
+    display: "flex",
+    paddingLeft: "7px",
+    flexDirection: "column",
+    justifyContent: "space-around",
+  },
+  indicatorCaption: {
+    color: grayColor[0],
+    fontSize: "14px",
+    paddingTop: "10px",
+    marginBottom: "0",
+    marginTop: "0",
+    margin: "0",
+    alignSelf: "center",
+  },
+
+  indicatorValue: {
+    ...title,
+    marginTop: "5px",
+    marginBottom: "3px",
+    alignSelf: "center",
   },
 });
 

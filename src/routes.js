@@ -70,9 +70,9 @@ var dashRoutes = [
       {
         layout: "/calculator",
         path: "/fin-calc-a",
-        name: "Check your loan",
+        name: "Check your Financing",
         mini: "A",
-        component: WIPPage,
+        component: FinCalculatorA,
       },
       {
         layout: "/calculator",
