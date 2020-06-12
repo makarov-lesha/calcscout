@@ -34,8 +34,21 @@ const finCalculatorBStyle = (theme) => ({
                 "input4 chart"
     `,
     gridGap: "0.5rem",
-    // alignItems: "center",
-    // justifyItems: "center",
+
+    "@media (max-width: 768px)": {
+      gridTemplateRows: "repeat(8, minmax(10vh, 1fr))",
+      gridTemplateColumns: "1fr",
+      gridTemplateAreas: `
+                  "input1"
+                  "input1"
+                  "input3"
+                  "input4"
+                  "result"
+                  "result"
+                  "chart" 
+                  "chart" 
+      `,
+    },
   },
   containerInput1: {
     display: "grid",

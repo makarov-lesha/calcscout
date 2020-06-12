@@ -33,7 +33,7 @@ export default function StartPage() {
             variant="contained"
             color="default"
             component={Link}
-            to="/calculator/fin-calc-b"
+            to="/calculator/fin-calc-a"
           >
             FINANCIAL CALCULATORS
           </Button>
