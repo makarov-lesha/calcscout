@@ -86,7 +86,7 @@ export default function FinCalculatorA() {
           onClick={() => {
             changeStepIndex(1);
           }}
-          disabled={activeStepIndex >= 3}
+          disabled={activeStepIndex >= 1}
         >
           {activeStepIndex === 0 ? "Estimate" : "Next"}
           {activeStepIndex !== 0 && (
