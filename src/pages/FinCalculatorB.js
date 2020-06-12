@@ -14,7 +14,7 @@ import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
 import CalculatorTypeSelector from "components/Calculators/FinCalculatorB/CalculatorTypeSelector.js";
-// import WizEarlyRep1 from "../../components/Wizards/WizEarlyRep1.js";
+import FinCalculatorBStep1 from "components/Calculators/FinCalculatorB/FinCalculatorBStep1.js";
 // import WizEarlyRep2 from "../../components/Wizards/WizEarlyRep2.js";
 // import WizEarlyRepFinish from "../../components/Wizards/WizEarlyRepFinish.js";
 
@@ -63,52 +63,51 @@ export default function FinCalculatorB() {
         Penalty Estimation
       </Typography>
 
-      <GridContainer justify="center" alignItems="center" direction="column">
-        <GridItem xs={12}>
-          {activeStepIndex === 0 && (
-            <CalculatorTypeSelector handleTabClick={handleTabClick} />
-          )}
-          {/* {activeStepIndex === 1 && <WizEarlyRep1 />}
-          {activeStepIndex === 2 && <WizEarlyRep2 />}
+      <div>
+        {activeStepIndex === 0 && (
+          <CalculatorTypeSelector handleTabClick={handleTabClick} />
+        )}
+        {activeStepIndex === 1 && <FinCalculatorBStep1 />}
+        {/* {activeStepIndex === 2 && <WizEarlyRep2 />}
           {activeStepIndex === 3 && <WizEarlyRepFinish />} */}
-        </GridItem>
-        <GridItem xs={12}>
-          {activeStepIndex > 0 && (
-            <Button
-              color="info"
-              onClick={() => {
-                changeStepIndex(-1);
-              }}
-            >
-              <KeyboardArrowLeft className={classes.icons} /> Back
-            </Button>
-          )}
+      </div>
+
+      <div style={{ justifySelf: "center" }}>
+        {activeStepIndex > 0 && (
           <Button
             color="info"
             onClick={() => {
-              changeStepIndex(1);
+              changeStepIndex(-1);
             }}
-            disabled={activeStepIndex >= 3}
           >
-            {activeStepIndex === 0 ? "Estimate" : "Next"}
-            {activeStepIndex !== 0 && (
-              <KeyboardArrowRight className={classes.icons} />
-            )}
+            <KeyboardArrowLeft className={classes.icons} /> Back
           </Button>
-          <Typography
-            variant="caption"
-            display="block"
-            align="center"
-            className={classes.mutedText}
-          >
-            {`${
-              calculatorTypeIndex === 0
-                ? "Selected: Business"
-                : "Selected: Individual"
-            }`}
-          </Typography>
-        </GridItem>
-      </GridContainer>
+        )}
+        <Button
+          color="info"
+          onClick={() => {
+            changeStepIndex(1);
+          }}
+          disabled={activeStepIndex >= 3}
+        >
+          {activeStepIndex === 0 ? "Estimate" : "Next"}
+          {activeStepIndex !== 0 && (
+            <KeyboardArrowRight className={classes.icons} />
+          )}
+        </Button>
+        <Typography
+          variant="caption"
+          display="block"
+          align="center"
+          className={classes.mutedText}
+        >
+          {`${
+            calculatorTypeIndex === 0
+              ? "Selected: Business"
+              : "Selected: Individual"
+          }`}
+        </Typography>
+      </div>
     </div>
   );
 }

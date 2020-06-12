@@ -265,6 +265,11 @@ const roseCardHeader = {
     "linear-gradient(60deg, " + roseColor[1] + ", " + roseColor[2] + ")",
   ...roseBoxShadow,
 };
+const darkCardHeader = {
+  background:
+    "linear-gradient(60deg, " + roseColor[1] + ", " + roseColor[2] + ")",
+  ...warningBoxShadow,
+};
 
 const card = {
   display: "inline-block",
@@ -419,6 +424,7 @@ export {
   infoCardHeader,
   primaryCardHeader,
   roseCardHeader,
+  darkCardHeader,
   cardActions,
   cardHeader,
   defaultBoxShadow,

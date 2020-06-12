@@ -165,6 +165,12 @@ const cardHeaderStyle = {
       ...roseCardHeader,
     },
   },
+  darkCardHeader: {
+    color: "#92abcf",
+    "&:not($cardHeaderText):not($cardHeaderIcon)": {
+      ...roseCardHeader,
+    },
+  },
 };
 
 export default cardHeaderStyle;
