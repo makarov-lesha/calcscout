@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+
+//redux
+import { useSelector, useDispatch } from "react-redux";
+import { changeCalcType } from "state/index";
+
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // nodejs library to set properties for components
@@ -19,13 +24,17 @@ import styles from "jss/components/navPillsStyle.js";
 const useStyles = makeStyles(styles);
 
 export default function NavPills(props) {
-  const [active, setActive] = useState(props.active);
+  const dispatch = useDispatch();
+  const calculatorTypeIndex = useSelector((state) => state.calculatorTypeIndex);
+
+  const [active, setActive] = useState(calculatorTypeIndex);
   const handleChange = (event, active) => {
     setActive(active);
-    props.handleTabClick(active);
+    dispatch(changeCalcType(active));
   };
   const handleChangeIndex = (index) => {
     setActive(index);
+    dispatch(changeCalcType(index));
   };
   const classes = useStyles();
   const { tabs, direction, color, horizontal, alignCenter } = props;

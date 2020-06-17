@@ -17,7 +17,7 @@ import AppsIcon from "@material-ui/icons/Apps";
 //core components
 import SelectCurrency from "components/Calculators/FinCalculatorB/SelectCurrency.js";
 import InputLoanAmount from "components/Calculators/FinCalculatorB/InputLoanAmount.js";
-import IosDurationSlider from "components/Calculators/FinCalculatorB/IosDurationSlider.js";
+import IosDurationSlider from "components/Calculators/FinCalculatorB/NumberOfPeriodsSlider.js";
 import InterestRateSlider from "components/Calculators/FinCalculatorB/InterestRateSlider.js";
 
 //styles

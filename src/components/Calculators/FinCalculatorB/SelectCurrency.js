@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { changeCurrency, changeCurrencyLabel } from "state/index";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -34,10 +36,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SelectCurrency() {
   const classes = useStyles();
-  const [currency, setCurrency] = useState("EUR");
+  const dispatch = useDispatch();
+  const currency = useSelector((state) => state.currency);
 
   const handleChange = (event) => {
-    setCurrency(event.target.value);
+    dispatch(changeCurrency(event.target.value));
+
+    dispatch(
+      changeCurrencyLabel(
+        currencies.filter((item) => item.value === event.target.value)[0][
+          "label"
+        ]
+      )
+    );
   };
 
   return (

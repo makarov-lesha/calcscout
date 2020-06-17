@@ -167,7 +167,7 @@ export default function Dashboard(props) {
         miniActive={miniActive}
         {...rest}
       />
-      <div className={mainPanelClasses} ref={mainPanel}>
+      <div id="scrollContainer" className={mainPanelClasses} ref={mainPanel}>
         <CalcNavbar
           sidebarMinimize={sidebarMinimize.bind(this)}
           miniActive={miniActive}

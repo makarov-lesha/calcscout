@@ -1,5 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import { useSelector, useDispatch } from "react-redux";
+import { changeInterestRate } from "state/index";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -41,13 +45,16 @@ function ValueLabelComponent(props) {
   );
 }
 
-export default function IosDurationSlider(props) {
+export default function InterestRateSlider(props) {
   const { defaultValue, minValue, maxValue, title, step } = props;
+
+  const dispatch = useDispatch();
+  const interestRate = useSelector((state) => state.interestRate);
+
   const classes = useStyles();
-  const [value, setValue] = React.useState(defaultValue);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    dispatch(changeInterestRate(newValue));
   };
 
   return (
@@ -62,7 +69,7 @@ export default function IosDurationSlider(props) {
         </Grid>
         <Grid item xs>
           <Slider
-            value={value}
+            value={interestRate}
             ValueLabelComponent={ValueLabelComponent}
             onChange={handleChange}
             aria-labelledby="continuous-slider"
@@ -85,7 +92,7 @@ ValueLabelComponent.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-IosDurationSlider.propTypes = {
+InterestRateSlider.propTypes = {
   defaultValue: PropTypes.number,
   minValue: PropTypes.number,
   maxValue: PropTypes.number,

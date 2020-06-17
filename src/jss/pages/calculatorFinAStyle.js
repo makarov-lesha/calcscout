@@ -45,6 +45,10 @@ const finCalculatorAStyle = (theme) => ({
     },
   },
 
+  cardNoMargin: {
+    marginBottom: 0,
+  },
+
   input1: {
     gridArea: "input1",
     alignSelf: "stretch",
@@ -82,15 +86,31 @@ const finCalculatorAStyle = (theme) => ({
                 "slider2 slider2"
     `,
     gridGap: "0.4rem",
+    "@media (max-width: 768px)": {
+      gridTemplateRows: "repeat(4, auto)",
+      gridTemplateColumns: "1fr",
+      gridTemplateAreas: `
+                "currency"
+                "loanValue"
+                "slider1"
+                "slider2"
+    `,
+    },
   },
 
   currencyArea: {
     gridArea: "currency",
+    "@media (max-width: 768px)": {
+      justifySelf: "stretch",
+    },
   },
 
   loanValueArea: {
     gridArea: "loanValue",
     justifySelf: "end",
+    "@media (max-width: 768px)": {
+      justifySelf: "stretch",
+    },
   },
   slider1Area: {
     gridArea: "slider1",

@@ -1,4 +1,5 @@
 import React from "react";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -42,7 +43,6 @@ export default function PanelsDescriptive(props) {
           </h4>
 
           <NavPills
-            handleTabClick={props.handleTabClick}
             color="info"
             alignCenter
             tabs={[

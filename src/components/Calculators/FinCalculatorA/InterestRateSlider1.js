@@ -1,5 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import { useSelector, useDispatch } from "react-redux";
+import { changeInterestRate } from "state/index";
+
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -66,22 +70,22 @@ const useStyles = makeStyles({
 
 const marks = [
   {
-    value: 6,
-    label: "6",
+    value: 0,
+    label: "0%",
   },
   {
-    value: 30,
+    value: 300,
   },
   {
-    value: 60,
-    label: "60",
+    value: 500,
+    label: "5%",
   },
   {
-    value: 90,
+    value: 700,
   },
   {
-    value: 120,
-    label: "120",
+    value: 1000,
+    label: "10%",
   },
 ];
 
@@ -95,13 +99,14 @@ function ValueLabelComponent(props) {
   );
 }
 
-export default function IosDurationSlider(props) {
-  const { defaultValue, minValue, maxValue, title, step } = props;
+export default function InterestRateSlider(props) {
+  const { minValue, maxValue, title, step } = props;
   const classes = useStyles();
-  const [value, setValue] = React.useState(defaultValue);
+  const dispatch = useDispatch();
+  const interestRate = useSelector((state) => state.interestRate);
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    dispatch(changeInterestRate(newValue));
   };
 
   return (
@@ -116,7 +121,7 @@ export default function IosDurationSlider(props) {
         </Grid>
         <Grid item xs>
           <IOSSlider
-            value={value}
+            value={interestRate}
             ValueLabelComponent={ValueLabelComponent}
             onChange={handleChange}
             aria-labelledby="continuous-slider"
@@ -124,7 +129,7 @@ export default function IosDurationSlider(props) {
             step={step}
             max={maxValue}
             valueLabelDisplay="auto"
-            valueLabelFormat={(x) => `${x} months`}
+            valueLabelFormat={(x) => `${x / 100} %`}
             marks={marks}
           />
         </Grid>
@@ -139,8 +144,7 @@ ValueLabelComponent.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-IosDurationSlider.propTypes = {
-  defaultValue: PropTypes.number,
+InterestRateSlider.propTypes = {
   minValue: PropTypes.number,
   maxValue: PropTypes.number,
   title: PropTypes.string,

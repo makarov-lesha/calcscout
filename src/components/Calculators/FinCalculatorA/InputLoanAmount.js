@@ -1,17 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import { useSelector, useDispatch } from "react-redux";
+import { changeLoanAmount } from "state/index";
+
 import MaskedInput from "react-text-mask";
 import NumberFormat from "react-number-format";
 import { makeStyles } from "@material-ui/core/styles";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
 import TextField from "@material-ui/core/TextField";
-import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
+      marginTop: "5px",
+      width: "100%",
     },
   },
 }));
@@ -47,12 +49,10 @@ function TextMaskCustom(props) {
   );
 }
 
-TextMaskCustom.propTypes = {
-  inputRef: PropTypes.func.isRequired,
-};
-
 function NumberFormatCustom(props) {
   const { inputRef, onChange, ...other } = props;
+
+  const currencyLabel = useSelector((state) => state.currencyLabel);
 
   return (
     <NumberFormat
@@ -68,19 +68,16 @@ function NumberFormatCustom(props) {
       }}
       thousandSeparator
       isNumericString
-      prefix="€"
+      prefix={currencyLabel}
     />
   );
 }
 
-NumberFormatCustom.propTypes = {
-  inputRef: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-};
-
 export default function InputLoanAmount() {
   const classes = useStyles();
+  const loanAmount = useSelector((state) => state.loanAmount);
+  const dispatch = useDispatch();
+
   const [values, setValues] = React.useState({
     numberformat: "1000",
   });
@@ -90,6 +87,7 @@ export default function InputLoanAmount() {
       ...values,
       [event.target.name]: event.target.value,
     });
+    dispatch(changeLoanAmount(parseInt(event.target.value)));
   };
 
   return (
@@ -97,7 +95,7 @@ export default function InputLoanAmount() {
       <TextField
         label="Input Loan Amount"
         variant="outlined"
-        value={values.numberformat}
+        value={loanAmount}
         onChange={handleChange}
         name="numberformat"
         id="formatted-numberformat-input"
@@ -108,3 +106,13 @@ export default function InputLoanAmount() {
     </div>
   );
 }
+
+TextMaskCustom.propTypes = {
+  inputRef: PropTypes.func.isRequired,
+};
+
+NumberFormatCustom.propTypes = {
+  inputRef: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};

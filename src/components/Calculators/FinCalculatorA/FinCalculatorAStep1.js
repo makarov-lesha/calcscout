@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
@@ -15,23 +15,30 @@ import BarChartIcon from "@material-ui/icons/BarChart";
 import AppsIcon from "@material-ui/icons/Apps";
 
 //core components
-import SelectCurrency from "components/Calculators/FinCalculatorB/SelectCurrency.js";
-import InputLoanAmount from "components/Calculators/FinCalculatorB/InputLoanAmount.js";
-import IosDurationSlider from "components/Calculators/FinCalculatorB/IosDurationSlider.js";
-import InterestRateSlider from "components/Calculators/FinCalculatorB/InterestRateSlider.js";
+import SelectCurrency from "components/Calculators/FinCalculatorA/SelectCurrency.js";
+import InputLoanAmount from "components/Calculators/FinCalculatorA/InputLoanAmount.js";
+import NumberOfPeriodsSlider from "components/Calculators/FinCalculatorA/NumberOfPeriodsSlider.js";
+import InterestRateSlider from "components/Calculators/FinCalculatorA/InterestRateSlider1.js";
+import FinCalculatorAResults1 from "components/Calculators/FinCalculatorA/FinCalculatorAResults1";
 
 //styles
 import styles from "jss/pages/calculatorFinAStyle.js";
 
 const useStyles = makeStyles(styles);
 
-export default function FinCalculatorBStep1(props) {
+export default function FinCalculatorAStep1(props) {
+  document.getElementById("scrollContainer");
+
+  useEffect(() => {
+    document.getElementById("scrollContainer").scrollTop = 0;
+  });
+
   const classes = useStyles();
 
   return (
     <div className={classes.containerStep1}>
       <div className={classes.input1}>
-        <Card>
+        <Card className={classes.cardNoMargin}>
           <CardHeader color="success" icon>
             <CardIcon color="info">
               <AccountBalanceIcon />
@@ -56,7 +63,7 @@ export default function FinCalculatorBStep1(props) {
                 />
               </div>
               <div className={classes.slider2Area}>
-                <IosDurationSlider
+                <NumberOfPeriodsSlider
                   title={"Number of periods"}
                   defaultValue={72}
                   step={3}
@@ -70,50 +77,7 @@ export default function FinCalculatorBStep1(props) {
       </div>
 
       <div className={classes.result}>
-        <Card>
-          <CardHeader color="success" icon>
-            <CardIcon color="info">
-              <AppsIcon />
-            </CardIcon>
-            <h4 className={classes.cardIconTitle}>Main Indicators</h4>
-          </CardHeader>
-          <CardBody>
-            <div className={classes.containerResult}>
-              <div className={classes.indicator1}>
-                <Paper elevation={2} className={classes.paper1}>
-                  <p className={classes.indicatorCaption}>Loan Principal</p>
-                  <h3 className={classes.indicatorValue}>$700k</h3>
-                  <p className={classes.indicatorCaption}>repaid in</p>
-                  <h3 className={classes.indicatorValue}>5 years</h3>
-                </Paper>
-              </div>
-              <div className={classes.indicator2}>
-                <Paper
-                  elevation={3}
-                  className={classes.paper1}
-                  style={{ justifyContent: "center" }}
-                >
-                  <p className={classes.indicatorCaption}>Repayment profile</p>
-                  <h3 className={classes.indicatorValue}>Chart</h3>
-                </Paper>
-              </div>
-              <div className={classes.indicator3}>
-                <Paper outlined elevation={2} className={classes.paper1}>
-                  <p className={classes.indicatorCaption}>Effective rate</p>
-                  <h3 className={classes.indicatorValue}>2.7%</h3>
-                </Paper>
-              </div>
-              <div className={classes.indicator4}>
-                <Paper outlined elevation={2} className={classes.paper1}>
-                  <p className={classes.indicatorCaption}>
-                    Sum of all interest payments
-                  </p>
-                  <h3 className={classes.indicatorValue}>$130k</h3>{" "}
-                </Paper>
-              </div>
-            </div>
-          </CardBody>
-        </Card>
+        <FinCalculatorAResults1 />
       </div>
 
       <div className={classes.chart1}>

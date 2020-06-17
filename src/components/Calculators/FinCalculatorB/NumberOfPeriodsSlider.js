@@ -1,5 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+
+import { useSelector, useDispatch } from "react-redux";
+import { changeNumberOfPeriods } from "state/index";
+
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -95,7 +99,7 @@ function ValueLabelComponent(props) {
   );
 }
 
-export default function IosDurationSlider(props) {
+export default function NumberOfPeriodsSlider(props) {
   const { defaultValue, minValue, maxValue, title, step } = props;
   const classes = useStyles();
   const [value, setValue] = React.useState(defaultValue);
@@ -139,7 +143,7 @@ ValueLabelComponent.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-IosDurationSlider.propTypes = {
+NumberOfPeriodsSlider.propTypes = {
   defaultValue: PropTypes.number,
   minValue: PropTypes.number,
   maxValue: PropTypes.number,

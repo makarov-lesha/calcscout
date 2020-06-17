@@ -1,4 +1,3 @@
-
 /*!
 
 =========================================================
@@ -16,30 +15,32 @@
 
 */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./state/store";
 
 import MainLayout from "layouts/Main.js";
 import CalcLayout from "layouts/Calc.js";
 
 import "sass/material-dashboard-pro-react.scss";
 
-
 const hist = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router history={hist}>
-      <Switch>
-        <Route path="/main" component={MainLayout} />
-        <Route path="/calculator" component={CalcLayout} />
-        <Route path="/" component={MainLayout} />
-        {/* <Redirect from="/" to="/main/start-page" /> */}
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router history={hist}>
+        <Switch>
+          <Route path="/main" component={MainLayout} />
+          <Route path="/calculator" component={CalcLayout} />
+          <Route path="/" component={MainLayout} />
+          {/* <Redirect from="/" to="/main/start-page" /> */}
+        </Switch>
+      </Router>
+    </Provider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
