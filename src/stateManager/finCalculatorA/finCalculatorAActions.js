@@ -1,6 +1,5 @@
 import {
   CHANGE_CALC_TYPE,
-  // CHANGE_ACTIVE_STEP_INDEX,
   CHANGE_CURRENCY,
   CHANGE_LOAN_AMOUNT,
   CHANGE_INTEREST_RATE,
@@ -14,13 +13,6 @@ export const changeCalcType = (index) => {
     payload: index,
   };
 };
-
-// export const changeActiveStepIndex = (index) => {
-//   return {
-//     type: CHANGE_ACTIVE_STEP_INDEX,
-//     payload: index,
-//   };
-// };
 
 export const changeCurrency = (currency) => {
   return {

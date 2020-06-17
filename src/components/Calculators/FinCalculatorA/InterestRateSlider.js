@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeInterestRate } from "state/index";
+import { changeInterestRate } from "stateManager/index";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -46,7 +46,7 @@ function ValueLabelComponent(props) {
 }
 
 export default function InterestRateSlider(props) {
-  const { defaultValue, minValue, maxValue, title, step } = props;
+  const { minValue, maxValue, title, step } = props;
 
   const dispatch = useDispatch();
   const interestRate = useSelector((state) => state.interestRate);

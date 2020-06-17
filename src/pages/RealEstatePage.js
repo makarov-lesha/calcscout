@@ -28,7 +28,7 @@ export default function StartPage() {
         <GridItem xs={12} sm={12} md={6}>
           <Button
             variant="contained"
-            color="default"
+            color="facebook"
             component={Link}
             to="/calculator/re-calc-a"
           >

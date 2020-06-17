@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeLoanAmount } from "state/index";
+import { changeLoanAmount } from "stateManager/index";
 
 import MaskedInput from "react-text-mask";
 import NumberFormat from "react-number-format";

@@ -23,7 +23,7 @@ export default function StartPage() {
         </GridItem>
       </GridContainer>
       <div className={classes.gridContainer}>
-        <Button color="default" component={Link} to="/main/financing">
+        <Button color="facebook" component={Link} to="/main/financing">
           Real Estate
         </Button>
         <Button color="white" component={Link} to="/main/financing">

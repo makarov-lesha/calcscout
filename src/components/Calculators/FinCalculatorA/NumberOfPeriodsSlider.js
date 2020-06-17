@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { useSelector, useDispatch } from "react-redux";
-import { changeNumberOfPeriods } from "state/index";
+import { changeNumberOfPeriods } from "stateManager/index";
 
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -100,11 +100,10 @@ function ValueLabelComponent(props) {
 }
 
 export default function NumberOfPeriodsSlider(props) {
-  const { defaultValue, minValue, maxValue, title, step } = props;
+  const { minValue, maxValue, title, step } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
   const numberOfPeriods = useSelector((state) => state.numberOfPeriods);
-  const [value, setValue] = React.useState(defaultValue);
 
   const handleChange = (event, newValue) => {
     dispatch(changeNumberOfPeriods(newValue));

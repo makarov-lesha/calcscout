@@ -58,7 +58,7 @@ export default function MainNavbar(props) {
     >
       <Hidden mdUp>
         <DialogTitle disableTypography className={classes.drawerHeader}>
-          <IconButton color="default" onClick={handleDrawerToggle}>
+          <IconButton color="facebook" onClick={handleDrawerToggle}>
             <ChevronRightSharpIcon style={{ color: "#fff" }} />
           </IconButton>
         </DialogTitle>

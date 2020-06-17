@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 //redux
 import { useSelector, useDispatch } from "react-redux";
-import { changeCalcType } from "state/index";
+import { changeCalcType } from "stateManager/index";
 
 // nodejs library that concatenates classes
 import classNames from "classnames";
