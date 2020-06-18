@@ -2,17 +2,14 @@ import React, { useEffect } from "react";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardIcon from "components/Card/CardIcon.js";
 import CardBody from "components/Card/CardBody.js";
-import CardFooter from "components/Card/CardFooter.js";
 
 // @material-ui/icons
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import BarChartIcon from "@material-ui/icons/BarChart";
-import AppsIcon from "@material-ui/icons/Apps";
 
 //core components
 import SelectCurrency from "components/Calculators/FinCalculatorA/SelectCurrency.js";
@@ -64,7 +61,7 @@ export default function FinCalculatorAStep1(props) {
               </div>
               <div className={classes.slider2Area}>
                 <NumberOfPeriodsSlider
-                  title={"Number of periods"}
+                  title={"Number of periods (months)"}
                   defaultValue={72}
                   step={3}
                   minValue={6}

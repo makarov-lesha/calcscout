@@ -5,7 +5,7 @@ import finCalculatorAReducer from "./finCalculatorA/finCalculatorAReducer";
 
 const store = createStore(
   finCalculatorAReducer,
-  composeWithDevTools(applyMiddleware(logger))
+  composeWithDevTools(applyMiddleware())
 );
 
 export default store;

@@ -19,17 +19,19 @@ export default function StartPage() {
     <div className={classes.container}>
       <GridContainer justify="center">
         <GridItem xs={12} sm={12} md={6}>
-          <h2 className={classes.title}>Calculation tools</h2>
+          <h2 className={classes.title}>
+            Calculation Tools <br /> for the World
+          </h2>
         </GridItem>
       </GridContainer>
       <div className={classes.gridContainer}>
-        <Button color="facebook" component={Link} to="/main/financing">
+        <Button color="facebook" component={Link} to="/main/real-estate">
           Real Estate
         </Button>
-        <Button color="white" component={Link} to="/main/financing">
+        <Button color="twitter" component={Link} to="/main/financing">
           Financing
         </Button>
-        <Button color="twitter" component={Link} to="/main/tax">
+        <Button color="white" component={Link} to="/main/tax">
           Tax
         </Button>
       </div>

@@ -127,8 +127,8 @@ const finCalculatorAStyle = (theme) => ({
 
   containerResult: {
     display: "grid",
-    gridTemplateRows: "2fr 1fr",
-    gridTemplateColumns: "1fr 2fr",
+    gridTemplateRows: "1fr 1fr",
+    gridTemplateColumns: "1fr 1fr",
     gridTemplateAreas: `
                 "indicator1 indicator2"
                 "indicator3 indicator4"
@@ -181,6 +181,7 @@ const finCalculatorAStyle = (theme) => ({
     marginTop: "0",
     margin: "0",
     alignSelf: "center",
+    textAlign: "center",
   },
 
   indicatorValue: {
