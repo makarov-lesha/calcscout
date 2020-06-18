@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
@@ -18,6 +19,10 @@ import NumberOfPeriodsSlider from "components/Calculators/FinCalculatorA/NumberO
 import InterestRateSlider from "components/Calculators/FinCalculatorA/InterestRateSlider1.js";
 import FinCalculatorAResults1 from "components/Calculators/FinCalculatorA/FinCalculatorAResults1";
 
+//charts
+import { ResponsiveTreeMap } from "@nivo/treemap";
+import treeMapData from "components/Charts/Data/treemapData";
+
 //styles
 import styles from "jss/pages/calculatorFinAStyle.js";
 
@@ -26,16 +31,16 @@ const useStyles = makeStyles(styles);
 export default function FinCalculatorAStep1(props) {
   document.getElementById("scrollContainer");
 
+  const classes = useStyles();
+
   useEffect(() => {
     document.getElementById("scrollContainer").scrollTop = 0;
   });
 
-  const classes = useStyles();
-
   return (
     <div className={classes.containerStep1}>
       <div className={classes.input1}>
-        <Card className={classes.cardNoMargin}>
+        <Card>
           <CardHeader color="success" icon>
             <CardIcon color="info">
               <AccountBalanceIcon />
@@ -52,9 +57,9 @@ export default function FinCalculatorAStep1(props) {
               </div>
               <div className={classes.slider1Area}>
                 <InterestRateSlider
-                  title={"Interest rate"}
+                  title={"Interest rate (%)"}
                   defaultValue={210}
-                  step={10}
+                  step={1}
                   minValue={0}
                   maxValue={1000}
                 />
@@ -85,7 +90,27 @@ export default function FinCalculatorAStep1(props) {
             </CardIcon>
             <h4 className={classes.cardIconTitle}>Chart</h4>
           </CardHeader>
-          <CardBody></CardBody>
+          <CardBody
+            style={{ height: "200px", width: "90%", alignSelf: "center" }}
+          >
+            <ResponsiveTreeMap
+              root={treeMapData}
+              identity="name"
+              value="loc"
+              innerPadding={3}
+              outerPadding={3}
+              margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+              label="loc"
+              labelFormat=".0s"
+              labelSkipSize={12}
+              labelTextColor={{ from: "color", modifiers: [["darker", 1.2]] }}
+              colors={{ scheme: "blues" }}
+              borderColor={{ from: "color", modifiers: [["darker", 0.3]] }}
+              animate={true}
+              motionStiffness={90}
+              motionDamping={11}
+            />
+          </CardBody>
         </Card>
       </div>
 
@@ -97,7 +122,27 @@ export default function FinCalculatorAStep1(props) {
             </CardIcon>
             <h4 className={classes.cardIconTitle}>Chart</h4>
           </CardHeader>
-          <CardBody></CardBody>
+          <CardBody
+            style={{ height: "200px", width: "90%", alignSelf: "center" }}
+          >
+            <ResponsiveTreeMap
+              root={treeMapData}
+              identity="name"
+              value="loc"
+              innerPadding={3}
+              outerPadding={3}
+              margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+              label="loc"
+              labelFormat=".0s"
+              labelSkipSize={12}
+              labelTextColor={{ from: "color", modifiers: [["darker", 1.2]] }}
+              colors={{ scheme: "blues" }}
+              borderColor={{ from: "color", modifiers: [["darker", 0.3]] }}
+              animate={true}
+              motionStiffness={90}
+              motionDamping={11}
+            />
+          </CardBody>
         </Card>
       </div>
     </div>

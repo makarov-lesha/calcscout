@@ -12,12 +12,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import CalcNavbar from "components/Navbars/CalcNavbar.js";
 import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 import routes from "routes.js";
 
 //images
-import logoImage from "assets/img/logo48.png";
-import logoWhiteImage from "assets/img/logo48.png";
+import logo from "assets/img/logo48.png";
 
 //styles
 import styles from "jss/layouts/calcStyle.js";
@@ -30,13 +28,12 @@ export default function Dashboard(props) {
   const { ...rest } = props;
 
   // states and functions
+  const color = "blue";
+  const bgColor = "black";
+  const image = "";
+
   const [mobileOpen, setMobileOpen] = useState(false);
   const [miniActive, setMiniActive] = useState(false);
-  const [color, setColor] = useState("blue");
-  const [bgColor, setBgColor] = useState("black");
-  const [fixedClasses, setFixedClasses] = useState("dropdown");
-  const [image, setImage] = useState("");
-  const [logo, setLogo] = useState(logoImage);
 
   // styles
   const classes = useStyles();
@@ -71,32 +68,6 @@ export default function Dashboard(props) {
       window.removeEventListener("resize", resizeFunction);
     };
   });
-
-  // functions for changing the states from components
-  const handleImageClick = (image) => {
-    setImage(image);
-  };
-  const handleColorClick = (color) => {
-    setColor(color);
-  };
-  const handleBgColorClick = (bgColor) => {
-    switch (bgColor) {
-      case "white":
-        setLogo(logoWhiteImage);
-        break;
-      default:
-        setLogo(logoImage);
-        break;
-    }
-    setBgColor(bgColor);
-  };
-  const handleFixedClick = () => {
-    if (fixedClasses === "dropdown") {
-      setFixedClasses("dropdown show");
-    } else {
-      setFixedClasses("dropdown");
-    }
-  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -194,18 +165,6 @@ export default function Dashboard(props) {
           </div>
         )}
         {getRoute() ? <Footer fluid /> : null}
-        <FixedPlugin
-          handleImageClick={handleImageClick}
-          handleColorClick={handleColorClick}
-          handleBgColorClick={handleBgColorClick}
-          color={color}
-          bgColor={bgColor}
-          bgImage={image}
-          handleFixedClick={handleFixedClick}
-          fixedClasses={fixedClasses}
-          sidebarMinimize={sidebarMinimize.bind(this)}
-          miniActive={miniActive}
-        />
       </div>
     </div>
   );

@@ -12,15 +12,15 @@ import WIPPage from "pages/WIPPage.js";
 import RealEstatePage from "pages/RealEstatePage.js";
 import FinancingPage from "pages/FinancingPage.js";
 import TaxPage from "pages/TaxPage.js";
-import RECalculatorA from "pages/RECalculatorA.js";
-import RECalculatorB from "pages/RECalculatorB.js";
-import RECalculatorC from "pages/RECalculatorC.js";
+// import RECalculatorA from "pages/RECalculatorA.js";
+// import RECalculatorB from "pages/RECalculatorB.js";
+// import RECalculatorC from "pages/RECalculatorC.js";
 import FinCalculatorA from "pages/FinCalculatorA.js";
 import FinCalculatorB from "pages/FinCalculatorB.js";
-import FinCalculatorC from "pages/FinCalculatorC.js";
-import TaxCalculatorA from "pages/TaxCalculatorA.js";
-import TaxCalculatorB from "pages/TaxCalculatorB.js";
-import TaxCalculatorC from "pages/TaxCalculatorC.js";
+// import FinCalculatorC from "pages/FinCalculatorC.js";
+// import TaxCalculatorA from "pages/TaxCalculatorA.js";
+// import TaxCalculatorB from "pages/TaxCalculatorB.js";
+// import TaxCalculatorC from "pages/TaxCalculatorC.js";
 
 var dashRoutes = [
   {

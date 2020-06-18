@@ -26,7 +26,7 @@ const finCalculatorAStyle = (theme) => ({
   containerStep1: {
     display: "grid",
     gridGap: "0.5rem",
-    gridTemplateRows: "minmax(20vh, 1fr) 200px",
+    gridTemplateRows: "minmax(20vh, 1fr) 300px",
     gridTemplateColumns: "1fr 1fr",
     gridTemplateAreas: `
               "input1 result"
@@ -34,7 +34,7 @@ const finCalculatorAStyle = (theme) => ({
     `,
 
     "@media (max-width: 768px)": {
-      gridTemplateRows: "minmax(20vh, 1fr) minmax(20vh, 1fr) 200px 200px",
+      gridTemplateRows: "minmax(20vh, 1fr) minmax(20vh, 1fr) 300px 300px",
       gridTemplateColumns: "1fr",
       gridTemplateAreas: `
                   "input1"
@@ -56,14 +56,17 @@ const finCalculatorAStyle = (theme) => ({
 
   result: {
     gridArea: "result",
+    alignSelf: "stretch",
   },
 
   chart1: {
     gridArea: "chart1",
+    alignSelf: "stretch",
   },
 
   chart2: {
     gridArea: "chart2",
+    alignSelf: "stretch",
   },
 
   cardNotMoved: {
@@ -86,16 +89,16 @@ const finCalculatorAStyle = (theme) => ({
                 "slider2 slider2"
     `,
     gridGap: "0.4rem",
-    "@media (max-width: 768px)": {
-      gridTemplateRows: "repeat(4, auto)",
-      gridTemplateColumns: "1fr",
-      gridTemplateAreas: `
-                "currency"
-                "loanValue"
-                "slider1"
-                "slider2"
-    `,
-    },
+    // "@media (max-width: 768px)": {
+    //   gridTemplateRows: "repeat(4, auto)",
+    //   gridTemplateColumns: "1fr",
+    //   gridTemplateAreas: `
+    //             "currency"
+    //             "loanValue"
+    //             "slider1"
+    //             "slider2"
+    // `,
+    // },
   },
 
   currencyArea: {
@@ -171,7 +174,7 @@ const finCalculatorAStyle = (theme) => ({
     display: "flex",
     paddingLeft: "7px",
     flexDirection: "column",
-    justifyContent: "space-around",
+    justifyContent: "center",
   },
   indicatorCaption: {
     color: grayColor[0],
@@ -189,6 +192,7 @@ const finCalculatorAStyle = (theme) => ({
     marginTop: "5px",
     marginBottom: "3px",
     alignSelf: "center",
+    textAlign: "center",
   },
 });
 

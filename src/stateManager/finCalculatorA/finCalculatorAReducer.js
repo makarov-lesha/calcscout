@@ -10,12 +10,19 @@ import {
 
 const initialState = {
   calculatorTypeIndex: 0,
-  // activeStepIndex: 0,
   currency: "EUR",
   currencyLabel: "€",
-  loanAmount: 1000,
-  interestRate: 100,
+  loanAmount: 10000,
+  interestRate: 400,
   numberOfPeriods: 60,
+  defaultMonthlyPayment: 184.12,
+  defaultSumOfInterestPayments: 1047.21,
+  chartData: {
+    finCalculatorAChart1: {
+      sumOfInterestPayments: 1047.21,
+      loanAmount: 10000,
+    },
+  },
 };
 
 const finCalculatorAReducer = (state = initialState, action) => {

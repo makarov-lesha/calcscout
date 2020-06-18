@@ -12,13 +12,9 @@ import imagine2 from "assets/img/sidebar-2.jpg";
 import imagine3 from "assets/img/sidebar-3.jpg";
 import imagine4 from "assets/img/sidebar-4.jpg";
 
-import Button from "components/CustomButtons/Button.js";
-
 const useStyles = makeStyles(styles);
 
 export default function FixedPlugin(props) {
-  const [classes, setClasses] = useState("dropdown show");
-  const [bg_checked, setBg_checked] = useState(true);
   const [bgImage, setBgImage] = useState(props.bgImage);
   const [showImage, setShowImage] = useState(true);
   const handleClick = () => {

@@ -15,12 +15,12 @@ const currencies = [
     label: "€",
   },
   {
-    value: "BTC",
-    label: "฿",
+    value: "GBP",
+    label: "£",
   },
   {
-    value: "JPY",
-    label: "¥",
+    value: "RUB",
+    label: "₽",
   },
 ];
 

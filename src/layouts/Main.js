@@ -12,9 +12,6 @@ import MainNavbar from "components/Navbars/MainNavbar.js";
 import Footer from "components/Footer/Footer.js";
 import StartPage from "pages/StartPage.js";
 
-//img
-import error from "assets/img/error.jpg";
-
 //styles
 import styles from "jss/layouts/mainStyle.js";
 
@@ -51,11 +48,7 @@ export default function Pages(props) {
       }
     });
   };
-  const getBgImage = () => {
-    if (window.location.pathname.indexOf("/main/error-page") !== -1) {
-      return error;
-    }
-  };
+
   const getActiveRoute = (routes) => {
     let activeRoute = "CalculationScout 24";
     for (let i = 0; i < routes.length; i++) {

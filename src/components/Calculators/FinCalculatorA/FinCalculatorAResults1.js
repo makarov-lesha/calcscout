@@ -29,9 +29,17 @@ export default function FinCalculatorAResults1() {
   const interestRate = useSelector((state) => state.interestRate);
   const numberOfPeriods = useSelector((state) => state.numberOfPeriods);
   const currencyLabel = useSelector((state) => state.currencyLabel);
+  const defaultMonthlyPayment = useSelector(
+    (state) => state.defaultMonthlyPayment
+  );
+  const defaultSumOfInterestPayments = useSelector(
+    (state) => state.defaultSumOfInterestPayments
+  );
 
-  const [monthlyPayment, setMonthlyPayment] = useState(17.1);
-  const [sumOfInterestPayments, setSumOfInterestPayments] = useState(25.6);
+  const [monthlyPayment, setMonthlyPayment] = useState(defaultMonthlyPayment);
+  const [sumOfInterestPayments, setSumOfInterestPayments] = useState(
+    defaultSumOfInterestPayments
+  );
 
   const wbRef = useRef(null);
 
@@ -50,10 +58,16 @@ export default function FinCalculatorAResults1() {
       S5SCalc.update_value(wbRef.current, "Sheet1", "C2", loanAmount);
       S5SCalc.update_value(wbRef.current, "Sheet1", "C3", interestRate / 10000);
       S5SCalc.update_value(wbRef.current, "Sheet1", "C4", numberOfPeriods);
-      setMonthlyPayment(wbRef.current.Sheets.Sheet1["C14"].v.toFixed(1));
-      setSumOfInterestPayments(wbRef.current.Sheets.Sheet1["C11"].v.toFixed(0));
+      setMonthlyPayment(wbRef.current.Sheets.Sheet1["C14"].v);
+      setSumOfInterestPayments(wbRef.current.Sheets.Sheet1["C11"].v);
     }
   }, [loanAmount, interestRate, numberOfPeriods]);
+
+  const numberOfYears = Math.floor(numberOfPeriods / 12);
+  const numberOfMonths = numberOfPeriods % 12;
+  const textRepaymentPeriods = `${
+    numberOfYears === 0 ? "" : numberOfYears + " years"
+  } ${numberOfMonths === 0 ? "" : numberOfMonths + " months"} `;
 
   return (
     <>
@@ -68,7 +82,7 @@ export default function FinCalculatorAResults1() {
           <div className={classes.containerResult}>
             <div className={classes.indicator1}>
               <Paper elevation={2} className={classes.paper1}>
-                <p className={classes.indicatorCaption}>Loan Principal</p>
+                <p className={classes.indicatorCaption}>Loan of</p>
                 <h3 className={classes.indicatorValue}>
                   {
                     <NumberFormat
@@ -79,22 +93,26 @@ export default function FinCalculatorAResults1() {
                     />
                   }
                 </h3>
-                <p className={classes.indicatorCaption}>repaid in</p>
-                <h3 className={classes.indicatorValue}>{`${
-                  numberOfPeriods / 12
-                } years`}</h3>
+                <p className={classes.indicatorCaption}>to be repaid in</p>
+                <p className={classes.indicatorValue}>{textRepaymentPeriods}</p>
               </Paper>
             </div>
             <div className={classes.indicator2}>
               <Paper
-                elevation={3}
+                elevation={7}
                 className={classes.paper1}
-                style={{ justifyContent: "center" }}
+                style={{ backgroundColor: "rgb(237, 236, 242)" }}
               >
                 <p className={classes.indicatorCaption}>Monthly Payment</p>
-                <h3
-                  className={classes.indicatorValue}
-                >{`${currencyLabel}${monthlyPayment}`}</h3>
+                <h3 className={classes.indicatorValue}>
+                  <NumberFormat
+                    value={monthlyPayment}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={currencyLabel}
+                    decimalScale={1}
+                  />
+                </h3>
               </Paper>
             </div>
             <div className={classes.indicator3}>
@@ -108,11 +126,17 @@ export default function FinCalculatorAResults1() {
             <div className={classes.indicator4}>
               <Paper outlined elevation={2} className={classes.paper1}>
                 <p className={classes.indicatorCaption}>
-                  Sum of all interest payments
+                  Total interest paid in <br /> {textRepaymentPeriods}
                 </p>
-                <h3
-                  className={classes.indicatorValue}
-                >{`${currencyLabel}${sumOfInterestPayments}`}</h3>{" "}
+                <h3 className={classes.indicatorValue}>
+                  <NumberFormat
+                    value={sumOfInterestPayments}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={currencyLabel}
+                    decimalScale={0}
+                  />
+                </h3>
               </Paper>
             </div>
           </div>
