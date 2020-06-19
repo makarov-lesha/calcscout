@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateChartData } from "stateManager/index";
 import NumberFormat from "react-number-format";
@@ -43,43 +43,61 @@ export default function FinCalculatorAResults1() {
     defaultSumOfInterestPayments
   );
 
-  const wbRef = useRef(null);
+  const [excelObjectData, setExcelObjectData] = useState("");
 
-  useEffect(() => {
-    fetch("/sheets/finCalculatorA.xlsx")
-      .then((res) => res.arrayBuffer())
-      .then((ab) => {
-        //read file
-        const wb = XLSX.read(ab, { type: "array", cellStyles: true });
-        wbRef.current = wb;
-      });
-  }, []);
-
-  useEffect(() => {
-    if (wbRef.current) {
-      S5SCalc.update_value(wbRef.current, "Sheet1", "C2", loanAmount);
-      S5SCalc.update_value(wbRef.current, "Sheet1", "C3", interestRate / 10000);
-      S5SCalc.update_value(wbRef.current, "Sheet1", "C4", numberOfPeriods);
-      setMonthlyPayment(wbRef.current.Sheets.Sheet1["C14"].v);
-      setSumOfInterestPayments(wbRef.current.Sheets.Sheet1["C11"].v);
-      dispatch(
-        updateChartData(
-          "finCalculatorAChart1",
-          "sumOfInterestPayments",
-          wbRef.current.Sheets.Sheet1["C11"].v
-        )
-      );
-      dispatch(
-        updateChartData("finCalculatorAChart1", "loanAmount", loanAmount)
-      );
-    }
-  }, [loanAmount, interestRate, numberOfPeriods]);
+  const excelJsonData = useMemo(
+    () =>
+      excelObjectData === ""
+        ? null
+        : XLSX.utils.sheet_to_json(excelObjectData.Sheets.Sheet1, {
+            header: 1,
+            raw: true,
+          }),
+    [excelObjectData]
+  );
 
   const numberOfYears = Math.floor(numberOfPeriods / 12);
   const numberOfMonths = numberOfPeriods % 12;
   const textRepaymentPeriods = `${
     numberOfYears === 0 ? "" : numberOfYears + " years"
   } ${numberOfMonths === 0 ? "" : numberOfMonths + " months"} `;
+
+  useEffect(() => {
+    fetch("/sheets/finCalculatorA.xlsx")
+      .then((res) => res.arrayBuffer())
+      .then((ab) => {
+        //read file
+        setExcelObjectData(XLSX.read(ab, { type: "array", cellStyles: true }));
+      });
+    // console.log("useeffect for fetching data completed");
+  }, []);
+
+  useEffect(() => {
+    if (excelObjectData) {
+      S5SCalc.update_value(excelObjectData, "Sheet1", "D3", loanAmount);
+      S5SCalc.update_value(
+        excelObjectData,
+        "Sheet1",
+        "D4",
+        interestRate / 10000
+      );
+      S5SCalc.update_value(excelObjectData, "Sheet1", "D5", numberOfPeriods);
+      setMonthlyPayment(excelObjectData.Sheets.Sheet1["D15"].v);
+      setSumOfInterestPayments(excelObjectData.Sheets.Sheet1["D12"].v);
+      dispatch(
+        updateChartData(
+          "finCalculatorAChart1",
+          "sumOfInterestPayments",
+          excelObjectData.Sheets.Sheet1["D12"].v
+        )
+      );
+      dispatch(
+        updateChartData("finCalculatorAChart1", "loanAmount", loanAmount)
+      );
+      // console.log("useeffect for changing data completed");
+      // console.log(excelJsonData);
+    }
+  }, [loanAmount, interestRate, numberOfPeriods, excelObjectData]);
 
   return (
     <>
@@ -138,11 +156,11 @@ export default function FinCalculatorAResults1() {
             <div className={classes.indicator4}>
               <Paper outlined elevation={2} className={classes.paper1}>
                 <p className={classes.indicatorCaption}>
-                  Total interest paid in <br /> {textRepaymentPeriods}
+                  Repayments to the Bank in <br /> {textRepaymentPeriods}
                 </p>
                 <h3 className={classes.indicatorValue}>
                   <NumberFormat
-                    value={sumOfInterestPayments}
+                    value={sumOfInterestPayments + loanAmount}
                     displayType={"text"}
                     thousandSeparator={true}
                     prefix={currencyLabel}

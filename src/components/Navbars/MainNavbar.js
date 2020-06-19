@@ -8,7 +8,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Hidden from "@material-ui/core/Hidden";
-import Drawer from "@material-ui/core/Drawer";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -184,7 +184,7 @@ export default function MainNavbar(props) {
         </Hidden>
         <Hidden mdUp>
           <Hidden mdUp>
-            <Drawer
+            <SwipeableDrawer
               variant="temporary"
               anchor={"right"}
               open={open}
@@ -197,7 +197,7 @@ export default function MainNavbar(props) {
               }}
             >
               {list}
-            </Drawer>
+            </SwipeableDrawer>
           </Hidden>
         </Hidden>
       </Toolbar>

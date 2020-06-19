@@ -8,7 +8,7 @@ import cx from "classnames";
 
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
-import Drawer from "@material-ui/core/Drawer";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -501,7 +501,7 @@ class Sidebar extends React.Component {
     return (
       <div ref={this.mainPanel}>
         <Hidden mdUp implementation="css">
-          <Drawer
+          <SwipeableDrawer
             variant="temporary"
             anchor={rtlActive ? "left" : "right"}
             open={this.props.open}
@@ -526,10 +526,10 @@ class Sidebar extends React.Component {
                 style={{ backgroundImage: "url(" + image + ")" }}
               />
             ) : null}
-          </Drawer>
+          </SwipeableDrawer>
         </Hidden>
         <Hidden smDown implementation="css">
-          <Drawer
+          <SwipeableDrawer
             onMouseOver={() => this.setState({ miniActive: false })}
             onMouseOut={() => this.setState({ miniActive: true })}
             anchor={rtlActive ? "right" : "left"}
@@ -551,7 +551,7 @@ class Sidebar extends React.Component {
                 style={{ backgroundImage: "url(" + image + ")" }}
               />
             ) : null}
-          </Drawer>
+          </SwipeableDrawer>
         </Hidden>
       </div>
     );
