@@ -46,7 +46,7 @@ export default function FinCalculatorAStep1(props) {
 
   useEffect(() => {
     document.getElementById("scrollContainer").scrollTop = 0;
-  });
+  }, []);
 
   useEffect(() => {
     setCopyTreeMapData(
