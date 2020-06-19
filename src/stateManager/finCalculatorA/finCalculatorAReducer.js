@@ -6,7 +6,10 @@ import {
   CHANGE_LOAN_AMOUNT,
   CHANGE_INTEREST_RATE,
   CHANGE_NUMBER_OF_PERIODS,
+  UPDATE_CHART_DATA,
 } from "./finCalculatorATypes";
+
+import produce from "immer";
 
 const initialState = {
   calculatorTypeIndex: 0,
@@ -32,11 +35,6 @@ const finCalculatorAReducer = (state = initialState, action) => {
         ...state,
         calculatorTypeIndex: action.payload,
       };
-    // case CHANGE_ACTIVE_STEP_INDEX:
-    //   return {
-    //     ...state,
-    //     activeStepIndex: action.payload,
-    //   };
     case CHANGE_CURRENCY:
       return {
         ...state,
@@ -62,6 +60,12 @@ const finCalculatorAReducer = (state = initialState, action) => {
         ...state,
         numberOfPeriods: action.payload,
       };
+    case UPDATE_CHART_DATA:
+      return produce(state, (draft) => {
+        draft.chartData[action.chartName][action.fieldName] = action.payload;
+        // bonus, you can do array updated as well!
+        // draft.firstLevel.secondLevel.thirdLevel.property2[index] = someData;
+      });
 
     default:
       return state;

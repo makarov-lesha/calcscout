@@ -5,6 +5,7 @@ import {
   CHANGE_INTEREST_RATE,
   CHANGE_NUMBER_OF_PERIODS,
   CHANGE_CURRENCY_LABEL,
+  UPDATE_CHART_DATA,
 } from "./finCalculatorATypes";
 
 export const changeCalcType = (index) => {
@@ -46,5 +47,14 @@ export const changeNumberOfPeriods = (numOfPeriods) => {
   return {
     type: CHANGE_NUMBER_OF_PERIODS,
     payload: numOfPeriods,
+  };
+};
+
+export const updateChartData = (chartName, fieldName, payload) => {
+  return {
+    type: UPDATE_CHART_DATA,
+    chartName: chartName,
+    fieldName: fieldName,
+    payload: payload,
   };
 };

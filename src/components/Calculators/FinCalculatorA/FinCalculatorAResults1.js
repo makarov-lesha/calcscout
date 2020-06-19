@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateChartData } from "stateManager/index";
 import NumberFormat from "react-number-format";
 
 //SheetJS
@@ -24,6 +25,7 @@ const useStyles = makeStyles(styles);
 
 export default function FinCalculatorAResults1() {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
   const loanAmount = useSelector((state) => state.loanAmount);
   const interestRate = useSelector((state) => state.interestRate);
@@ -60,6 +62,16 @@ export default function FinCalculatorAResults1() {
       S5SCalc.update_value(wbRef.current, "Sheet1", "C4", numberOfPeriods);
       setMonthlyPayment(wbRef.current.Sheets.Sheet1["C14"].v);
       setSumOfInterestPayments(wbRef.current.Sheets.Sheet1["C11"].v);
+      dispatch(
+        updateChartData(
+          "finCalculatorAChart1",
+          "sumOfInterestPayments",
+          wbRef.current.Sheets.Sheet1["C11"].v
+        )
+      );
+      dispatch(
+        updateChartData("finCalculatorAChart1", "loanAmount", loanAmount)
+      );
     }
   }, [loanAmount, interestRate, numberOfPeriods]);
 

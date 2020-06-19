@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 // @material-ui/core components
@@ -32,10 +32,29 @@ export default function FinCalculatorAStep1(props) {
   document.getElementById("scrollContainer");
 
   const classes = useStyles();
+  const [copyTreeMapData, setCopyTreeMapData] = useState({ ...treeMapData });
+
+  const loanAmount = useSelector(
+    (state) => state.chartData.finCalculatorAChart1.loanAmount
+  );
+
+  const sumOfInterestPayments = useSelector(
+    (state) => state.chartData.finCalculatorAChart1.sumOfInterestPayments
+  );
+
+  const currencyLabel = useSelector((state) => state.currencyLabel);
 
   useEffect(() => {
     document.getElementById("scrollContainer").scrollTop = 0;
   });
+
+  useEffect(() => {
+    setCopyTreeMapData(
+      { ...copyTreeMapData },
+      (copyTreeMapData.children[0].loc = loanAmount),
+      (copyTreeMapData.children[1].loc = sumOfInterestPayments)
+    );
+  }, [loanAmount, sumOfInterestPayments]);
 
   return (
     <div className={classes.containerStep1}>
@@ -94,14 +113,15 @@ export default function FinCalculatorAStep1(props) {
             style={{ height: "200px", width: "90%", alignSelf: "center" }}
           >
             <ResponsiveTreeMap
-              root={treeMapData}
+              root={copyTreeMapData}
               identity="name"
               value="loc"
               innerPadding={3}
               outerPadding={3}
               margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-              label="loc"
-              labelFormat=".0s"
+              label={function (e) {
+                return e.name + " (" + currencyLabel + e.loc.toFixed(0) + ")";
+              }}
               labelSkipSize={12}
               labelTextColor={{ from: "color", modifiers: [["darker", 1.2]] }}
               colors={{ scheme: "blues" }}
@@ -126,14 +146,15 @@ export default function FinCalculatorAStep1(props) {
             style={{ height: "200px", width: "90%", alignSelf: "center" }}
           >
             <ResponsiveTreeMap
-              root={treeMapData}
+              root={copyTreeMapData}
               identity="name"
               value="loc"
               innerPadding={3}
               outerPadding={3}
               margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-              label="loc"
-              labelFormat=".0s"
+              label={function (e) {
+                return e.name + " (" + currencyLabel + e.loc.toFixed(0) + ")";
+              }}
               labelSkipSize={12}
               labelTextColor={{ from: "color", modifiers: [["darker", 1.2]] }}
               colors={{ scheme: "blues" }}
