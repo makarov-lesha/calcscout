@@ -16,7 +16,7 @@ import BarChartIcon from "@material-ui/icons/BarChart";
 import SelectCurrency from "components/Calculators/FinCalculatorA/SelectCurrency.js";
 import InputLoanAmount from "components/Calculators/FinCalculatorA/InputLoanAmount.js";
 import NumberOfPeriodsSlider from "components/Calculators/FinCalculatorA/NumberOfPeriodsSlider.js";
-import InterestRateSlider from "components/Calculators/FinCalculatorA/InterestRateSlider1.js";
+import InterestRateSlider from "components/Calculators/FinCalculatorA/InterestRateSlider.js";
 import FinCalculatorAResults1 from "components/Calculators/FinCalculatorA/FinCalculatorAResults1";
 
 //charts

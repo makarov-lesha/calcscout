@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -103,10 +103,16 @@ export default function NumberOfPeriodsSlider(props) {
   const { minValue, maxValue, title, step } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
-  const numberOfPeriods = useSelector((state) => state.numberOfPeriods);
+  // const numberOfPeriods = useSelector((state) => state.numberOfPeriods);
 
-  const handleChange = (event, newValue) => {
+  const [numOfPeriodsIntState, setnumOfPeriodsIntState] = useState(60);
+
+  const changeGlobalState = (event, newValue) => {
     dispatch(changeNumberOfPeriods(newValue));
+  };
+
+  const changeInternalState = (event, newValue) => {
+    setnumOfPeriodsIntState(newValue);
   };
 
   return (
@@ -121,9 +127,10 @@ export default function NumberOfPeriodsSlider(props) {
         </Grid>
         <Grid item xs>
           <IOSSlider
-            value={numberOfPeriods}
+            value={numOfPeriodsIntState}
             ValueLabelComponent={ValueLabelComponent}
-            onChange={handleChange}
+            onChange={changeInternalState}
+            onChangeCommitted={changeGlobalState}
             aria-labelledby="continuous-slider"
             min={minValue}
             step={step}
