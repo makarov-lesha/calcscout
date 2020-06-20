@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateChartData } from "stateManager/index";
 import NumberFormat from "react-number-format";
@@ -45,17 +45,6 @@ export default function FinCalculatorAResults1() {
 
   const [excelObjectData, setExcelObjectData] = useState("");
 
-  const excelJsonData = useMemo(
-    () =>
-      excelObjectData === ""
-        ? null
-        : XLSX.utils.sheet_to_json(excelObjectData.Sheets.Sheet1, {
-            header: 1,
-            raw: true,
-          }),
-    [excelObjectData]
-  );
-
   const numberOfYears = Math.floor(numberOfPeriods / 12);
   const numberOfMonths = numberOfPeriods % 12;
   const textRepaymentPeriods = `${
@@ -74,30 +63,60 @@ export default function FinCalculatorAResults1() {
 
   useEffect(() => {
     if (excelObjectData) {
-      S5SCalc.update_value(excelObjectData, "Sheet1", "D3", loanAmount);
-      S5SCalc.update_value(
-        excelObjectData,
-        "Sheet1",
-        "D4",
-        interestRate / 10000
-      );
-      S5SCalc.update_value(excelObjectData, "Sheet1", "D5", numberOfPeriods);
-      setMonthlyPayment(excelObjectData.Sheets.Sheet1["D15"].v);
-      setSumOfInterestPayments(excelObjectData.Sheets.Sheet1["D12"].v);
-      dispatch(
-        updateChartData(
-          "finCalculatorAChart1",
-          "sumOfInterestPayments",
-          excelObjectData.Sheets.Sheet1["D12"].v
-        )
-      );
-      dispatch(
-        updateChartData("finCalculatorAChart1", "loanAmount", loanAmount)
-      );
-      // console.log("useeffect for changing data completed");
-      // console.log(excelJsonData);
+      const updateExcel = (
+        loanAmount,
+        interestRate,
+        numberOfPeriods,
+        excelObjectData
+      ) => {
+        S5SCalc.update_value(excelObjectData, "Sheet1", "F3", loanAmount);
+        S5SCalc.update_value(
+          excelObjectData,
+          "Sheet1",
+          "F4",
+          interestRate / 10000
+        );
+        S5SCalc.update_value(excelObjectData, "Sheet1", "F5", numberOfPeriods);
+        // S5SCalc.recalculate(excelObjectData);
+        setMonthlyPayment(excelObjectData.Sheets.Sheet1["F15"].v);
+        setSumOfInterestPayments(excelObjectData.Sheets.Sheet1["F12"].v);
+        dispatch(
+          updateChartData(
+            "finCalculatorAChart1",
+            "sumOfInterestPayments",
+            excelObjectData.Sheets.Sheet1["F12"].v
+          )
+        );
+        dispatch(
+          updateChartData("finCalculatorAChart1", "loanAmount", loanAmount)
+        );
+
+        const excelJsonData = XLSX.utils.sheet_to_json(
+          excelObjectData.Sheets.Sheet1,
+          {
+            header: 1,
+            raw: true,
+          }
+        );
+
+        const periodsArrayChart1 = excelJsonData[31].slice(
+          excelJsonData[31][1],
+          excelJsonData[31][2]
+        );
+
+        // // const interestPaymentsArray = excelJsonData[31].slice(
+        // //   excelJsonData[31][1],
+        // //   excelJsonData[31][2]
+        // // );
+
+        // console.log(excelObjectData);
+        // console.log(excelJsonData);
+        // console.log(periodsArrayChart1);
+      };
+
+      updateExcel(loanAmount, interestRate, numberOfPeriods, excelObjectData);
     }
-  }, [loanAmount, interestRate, numberOfPeriods, excelObjectData]);
+  }, [loanAmount, interestRate, numberOfPeriods, excelObjectData, dispatch]);
 
   return (
     <>
@@ -124,7 +143,9 @@ export default function FinCalculatorAResults1() {
                   }
                 </h3>
                 <p className={classes.indicatorCaption}>to be repaid in</p>
-                <p className={classes.indicatorValue}>{textRepaymentPeriods}</p>
+                <p className={classes.indicatorCaption}>
+                  {textRepaymentPeriods}
+                </p>
               </Paper>
             </div>
             <div className={classes.indicator2}>
@@ -156,7 +177,7 @@ export default function FinCalculatorAResults1() {
             <div className={classes.indicator4}>
               <Paper outlined elevation={2} className={classes.paper1}>
                 <p className={classes.indicatorCaption}>
-                  Repayments to the Bank in <br /> {textRepaymentPeriods}
+                  In {textRepaymentPeriods} you will repay to the bank
                 </p>
                 <h3 className={classes.indicatorValue}>
                   <NumberFormat
