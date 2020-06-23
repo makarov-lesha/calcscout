@@ -6,7 +6,6 @@ import { changeNumberOfPeriods } from "stateManager/index";
 
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Tooltip from "@material-ui/core/Tooltip";
 
@@ -103,7 +102,6 @@ export default function NumberOfPeriodsSlider(props) {
   const { minValue, maxValue, title, step } = props;
   const classes = useStyles();
   const dispatch = useDispatch();
-  // const numberOfPeriods = useSelector((state) => state.numberOfPeriods);
 
   const [numOfPeriodsIntState, setnumOfPeriodsIntState] = useState(60);
 
@@ -118,11 +116,14 @@ export default function NumberOfPeriodsSlider(props) {
   return (
     <div className={classes.root}>
       <Grid container direction="column" spacing={1}>
-        <Grid item container align="center" justify="flex-start">
+        <Grid item container align="center" justify="space-between">
           <Grid item>
-            <Typography id="continuous-slider" gutterBottom>
-              {title}
-            </Typography>
+            <h5>{title}</h5>
+          </Grid>
+          <Grid item>
+            <h5>
+              <small>{numOfPeriodsIntState + " months"}</small>
+            </h5>
           </Grid>
         </Grid>
         <Grid item xs>

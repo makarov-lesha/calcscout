@@ -30,7 +30,7 @@ import styles from "jss/pages/calculatorFinAStyle.js";
 
 const useStyles = makeStyles(styles);
 
-export default function FinCalculatorAStep1(props) {
+export default function FinCalculatorAType1Step1(props) {
   document.getElementById("scrollContainer");
 
   const classes = useStyles();
@@ -87,7 +87,7 @@ export default function FinCalculatorAStep1(props) {
               </div>
               <div className={classes.slider2Area}>
                 <NumberOfPeriodsSlider
-                  title={"Number of periods (months)"}
+                  title={"Number of periods"}
                   defaultValue={72}
                   step={3}
                   minValue={6}
@@ -113,7 +113,26 @@ export default function FinCalculatorAStep1(props) {
           </CardHeader>
           <CardBody
             style={{ height: "200px", width: "90%", alignSelf: "center" }}
-          ></CardBody>
+          >
+            <ResponsiveTreeMap
+              root={copyTreeMapData}
+              identity="name"
+              value="loc"
+              innerPadding={3}
+              outerPadding={3}
+              margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
+              label={function (e) {
+                return e.name + " (" + currencyLabel + e.loc.toFixed(0) + ")";
+              }}
+              labelSkipSize={12}
+              labelTextColor={{ from: "color", modifiers: [["darker", 1.2]] }}
+              colors={{ scheme: "blues" }}
+              borderColor={{ from: "color", modifiers: [["darker", 0.3]] }}
+              animate={true}
+              motionStiffness={90}
+              motionDamping={11}
+            />
+          </CardBody>
         </Card>
       </div>
 

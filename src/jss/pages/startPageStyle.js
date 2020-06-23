@@ -49,6 +49,20 @@ const startPageStyle = (theme) => ({
     fontSize: "18px",
     color: whiteColor,
   },
+
+  arrowButtonsContainer: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "15px",
+  },
+  arrow: {
+    width: "48px",
+    marginLeft: "20px",
+    marginRight: "20px",
+  },
+  arrowIcon: {
+    color: "white",
+  },
 });
 
 export default startPageStyle;

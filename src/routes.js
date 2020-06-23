@@ -16,7 +16,6 @@ import TaxPage from "pages/TaxPage.js";
 // import RECalculatorB from "pages/RECalculatorB.js";
 // import RECalculatorC from "pages/RECalculatorC.js";
 import FinCalculatorA from "pages/FinCalculatorA.js";
-import FinCalculatorB from "pages/FinCalculatorB.js";
 // import FinCalculatorC from "pages/FinCalculatorC.js";
 // import TaxCalculatorA from "pages/TaxCalculatorA.js";
 // import TaxCalculatorB from "pages/TaxCalculatorB.js";

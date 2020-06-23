@@ -15,7 +15,8 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 //other components
 import Button from "components/CustomButtons/Button.js";
 import CalculatorTypeSelector from "components/Calculators/FinCalculatorA/CalculatorTypeSelector.js";
-import FinCalculatorAStep1 from "components/Calculators/FinCalculatorA/FinCalculatorAStep1.js";
+import FinCalculatorAType1Step1 from "components/Calculators/FinCalculatorA/FinCalculatorAType1Step1.js";
+import WIPPage from "pages/WIPPage.js";
 
 //styles
 import styles from "jss/pages/calculatorFinAStyle.js";
@@ -46,12 +47,16 @@ export default function FinCalculatorA() {
   return (
     <div className={classes.containerCalculator}>
       <Typography variant="h5" component="h1" align="center">
-        Check Your Financing
+        Check Your Loan
       </Typography>
 
       <div>
         {activeStepIndex === 0 && <CalculatorTypeSelector />}
-        {activeStepIndex === 1 && <FinCalculatorAStep1 />}
+        {activeStepIndex === 1 && calculatorTypeIndex === 0 && <WIPPage />}
+        {activeStepIndex === 1 && calculatorTypeIndex === 1 && (
+          <FinCalculatorAType1Step1 />
+        )}
+        {activeStepIndex === 1 && calculatorTypeIndex === 2 && <WIPPage />}
       </div>
 
       <div style={{ justifySelf: "center" }}>
@@ -83,9 +88,11 @@ export default function FinCalculatorA() {
           align="center"
           className={classes.mutedText}
         >
-          {`${
-            calculatorTypeIndex === 0 ? "Selected: Cash" : "Selected: Mortgage"
-          }`}
+          {calculatorTypeIndex === 0
+            ? "Interest Rate"
+            : calculatorTypeIndex === 1
+            ? "Monthly Payment"
+            : "Repayment Period"}
         </Typography>
       </div>
     </div>

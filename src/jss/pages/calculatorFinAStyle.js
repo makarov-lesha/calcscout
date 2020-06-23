@@ -20,7 +20,7 @@ const finCalculatorAStyle = (theme) => ({
   containerCalculator: {
     display: "grid",
     gridTemplateRows: "auto minmax(40vh, 1fr) auto",
-    gridTemplateColumns: "1fr",
+    gridTemplateColumns: "100%",
     gridGap: "0.5rem",
   },
   containerStep1: {

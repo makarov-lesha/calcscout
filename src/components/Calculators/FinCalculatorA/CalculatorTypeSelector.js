@@ -5,7 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 
 // @material-ui/icons
 import EuroIcon from "@material-ui/icons/Euro";
-import HouseIcon from "@material-ui/icons/House";
+import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
+import AvTimerIcon from "@material-ui/icons/AvTimer";
 
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
@@ -37,7 +38,7 @@ export default function PanelsDescriptive(props) {
   return (
     <div>
       <GridContainer justify="center">
-        <GridItem xs={12} sm={8} md={8}>
+        <GridItem xs={12} sm={10} md={10}>
           <h4 className={classes.pageSubcategoriesTitle}>
             Choose one option to proceed
           </h4>
@@ -47,58 +48,77 @@ export default function PanelsDescriptive(props) {
             alignCenter
             tabs={[
               {
-                tabButton: "Consumer credit",
-                tabIcon: EuroIcon,
+                tabButton: "Check interest rate",
+                tabIcon: AccountBalanceIcon,
                 tabContent: (
                   <Card>
                     <CardHeader>
                       <h4 className={classes.cardTitle}>
-                        Plan or Check conditions of you Consumer Credit
+                        Easily find effective interest rate for your loan
                       </h4>
                       <p className={classes.cardCategory}>
                         Just to be sure you know what you are doing
                       </p>
                     </CardHeader>
                     <CardBody>
-                      Please choose this option if you apply for consumer credit
-                      (i.e. normally cash) and would like to review the
-                      conditions offered to you or plan in advance what you are
-                      going to ask.
+                      Choose this option if you would like to find{" "}
+                      <b>effective interest rate</b> of your loan.
                       <br />
                       <br />
-                      Calculator will help you to become aware of major
-                      parameters of your loan.
+                      This option may be interesting for you if you know{" "}
+                      <b>the number of monthly payments</b> you are going to
+                      make and the <b>size of each payment</b>.
                       <br />
-                      <br />
-                      Even if you have already aplied for financing, here you
-                      wll be able to double check the conditions.
                     </CardBody>
                   </Card>
                 ),
               },
               {
-                tabButton: "Mortgage Financing",
-                tabIcon: HouseIcon,
+                tabButton: "Optimal monthly payment",
+                tabIcon: EuroIcon,
                 tabContent: (
                   <Card>
                     <CardHeader>
                       <h4 className={classes.cardTitle}>
-                        Plan or Check conditions of you Mortgage
+                        Easily estimate monthly payment to the bank
                       </h4>
                       <p className={classes.cardCategory}>
                         Just to be sure you know what you are doing
                       </p>
                     </CardHeader>
                     <CardBody>
-                      Please choose this option if you are planning to take a
-                      mortgage.
+                      Choose this option if you would like to find the amount of
+                      <b>monthly payment</b> to the bank according to the
+                      conditions of the loan you set.
                       <br />
-                      It is important to be fully aware about the conditions
-                      offered to you by the bank.
                       <br />
-                      Even if you have already taken the mortgage, here you can
-                      double-check your effective interest rate and other
-                      parameters.
+                      This option may be interesting for you have idea about{" "}
+                      <b>the interest rate</b> applied by the bank and{" "}
+                      <b>period</b> for which you are taking the loan..
+                    </CardBody>
+                  </Card>
+                ),
+              },
+              {
+                tabButton: "Optimal repayment period",
+                tabIcon: AvTimerIcon,
+                tabContent: (
+                  <Card>
+                    <CardHeader>
+                      <h4 className={classes.cardTitle}>
+                        Easily estimate optimal repayment period for your loan
+                      </h4>
+                      <p className={classes.cardCategory}>
+                        Just to be sure you know what you are doing
+                      </p>
+                    </CardHeader>
+                    <CardBody>
+                      Choose this option if you would like to find the repayment
+                      period according to the conditions of the loan you set.
+                      <br />
+                      <br />
+                      You will need to indicate <b>Loan amount</b>,{" "}
+                      <b>Interest rate</b> and prefered <b>Monthly payment</b>.
                     </CardBody>
                   </Card>
                 ),
