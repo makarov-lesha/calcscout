@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeInterestRate } from "stateManager/index";
 
 import { makeStyles, withStyles } from "@material-ui/core/styles";

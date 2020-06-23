@@ -21,7 +21,9 @@ import FinCalculatorAResults1 from "components/Calculators/FinCalculatorA/FinCal
 
 //charts
 import { ResponsiveTreeMap } from "@nivo/treemap";
+// import { ResponsiveBar } from "@nivo/bar";
 import treeMapData from "components/Charts/Data/treemapData";
+// import barData from "components/Charts/Data/barNivoData.js";
 
 //styles
 import styles from "jss/pages/calculatorFinAStyle.js";
@@ -111,26 +113,7 @@ export default function FinCalculatorAStep1(props) {
           </CardHeader>
           <CardBody
             style={{ height: "200px", width: "90%", alignSelf: "center" }}
-          >
-            <ResponsiveTreeMap
-              root={copyTreeMapData}
-              identity="name"
-              value="loc"
-              innerPadding={3}
-              outerPadding={3}
-              margin={{ top: 10, right: 10, bottom: 10, left: 10 }}
-              label={function (e) {
-                return e.name + " (" + currencyLabel + e.loc.toFixed(0) + ")";
-              }}
-              labelSkipSize={12}
-              labelTextColor={{ from: "color", modifiers: [["darker", 1.2]] }}
-              colors={{ scheme: "blues" }}
-              borderColor={{ from: "color", modifiers: [["darker", 0.3]] }}
-              animate={true}
-              motionStiffness={90}
-              motionDamping={11}
-            />
-          </CardBody>
+          ></CardBody>
         </Card>
       </div>
 

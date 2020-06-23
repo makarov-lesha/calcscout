@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 // @material-ui/core components
@@ -8,6 +8,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import Button from "components/CustomButtons/Button.js";
+import StartMenu from "components/Menu/StartMenu.js";
 
 import styles from "jss/pages/startPageStyle.js";
 
@@ -15,6 +16,8 @@ const useStyles = makeStyles(styles);
 
 export default function StartPage() {
   const classes = useStyles();
+  const [menuIndex, setMenuIndex] = useState(0);
+
   return (
     <div className={classes.container}>
       <GridContainer justify="center">
@@ -25,15 +28,7 @@ export default function StartPage() {
         </GridItem>
       </GridContainer>
       <div className={classes.gridContainer}>
-        <Button color="facebook" component={Link} to="/main/real-estate">
-          Real Estate
-        </Button>
-        <Button color="twitter" component={Link} to="/main/financing">
-          Financing
-        </Button>
-        <Button color="white" component={Link} to="/main/tax">
-          Tax
-        </Button>
+        <StartMenu menuIndex={menuIndex} setMenuIndex={setMenuIndex} />
       </div>
     </div>
   );

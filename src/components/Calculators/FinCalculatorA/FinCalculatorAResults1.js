@@ -99,19 +99,41 @@ export default function FinCalculatorAResults1() {
           }
         );
 
-        const periodsArrayChart1 = excelJsonData[31].slice(
-          excelJsonData[31][1],
-          excelJsonData[31][2]
+        const periodsRow = excelJsonData.filter((row) => {
+          return row[0] === "chart_period_name";
+        })[0];
+
+        const principalPaymentsRow = excelJsonData.filter((row) => {
+          return row[0] === "chart_principal_payments";
+        })[0];
+
+        const interestPaymentsRow = excelJsonData.filter((row) => {
+          return row[0] === "chart_interest_payments";
+        })[0];
+
+        const periodsRowChart1 = periodsRow.slice(periodsRow[1], periodsRow[2]);
+        const principalPaymentsChart1 = principalPaymentsRow.slice(
+          periodsRow[1],
+          periodsRow[2]
         );
+        const interestPaymentsChart1 = interestPaymentsRow.slice(
+          periodsRow[1],
+          periodsRow[2]
+        );
+
+        // [31].slice(
+        //   excelJsonData[31][1],
+        //   excelJsonData[31][2]
+        // );
 
         // // const interestPaymentsArray = excelJsonData[31].slice(
         // //   excelJsonData[31][1],
         // //   excelJsonData[31][2]
         // // );
 
-        // console.log(excelObjectData);
-        // console.log(excelJsonData);
-        // console.log(periodsArrayChart1);
+        console.log(excelObjectData);
+        console.log(excelJsonData);
+        console.log(periodsRowChart1);
       };
 
       updateExcel(loanAmount, interestRate, numberOfPeriods, excelObjectData);
